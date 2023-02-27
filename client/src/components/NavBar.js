@@ -5,18 +5,18 @@ const NavBar = () => {
         <>
         <Navbar expand='sm' bg='primary' variant='dark'>
             <Container fluid='fluid'>
-                <Navbar.Brand href="https://www.thezalewskiproject.com/">The Zalewski Project</Navbar.Brand>
+                <Navbar.Brand href="/">The Zalewski Project</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className='justify-content-start'>
-                        <Nav.Link href="https://www.thezalewskiproject.com/tree">Family Tree</Nav.Link>
+                        <Nav.Link href="https://www.zalewskifamily.net/tzp">Interactive Tree</Nav.Link>
                         <NavDropdown title="Census" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="https://www.thezalewskiproject.com/census">View Year List</NavDropdown.Item>
-                            <NavDropdown.Item href="https://www.thezalewskiproject.com/census#census/1880">1880</NavDropdown.Item>
-                            <NavDropdown.Item href="https://www.thezalewskiproject.com/census#census/1900">1900</NavDropdown.Item>
+                            <NavDropdown.Item href="/census">View Year List</NavDropdown.Item>
+                            <NavDropdown.Item href="/census/1880">1880</NavDropdown.Item>
+                            <NavDropdown.Item href="/census/1900">1900</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="https://www.thezalewskiproject.com/cemetery.php">Cemetery Records</Nav.Link>
-                        <Nav.Link href="/">Milwaukee Death Records</Nav.Link>
+                        <Nav.Link href="/cemetery">Cemetery Records</Nav.Link>
+                        <Nav.Link href="/deaths">Milwaukee Death Records</Nav.Link>
                     </Nav>
                     <Nav className='ms-auto'>
                         <Nav.Link href="https://www.zalewskifamily.net">Zalewski Family Genealogy</Nav.Link>

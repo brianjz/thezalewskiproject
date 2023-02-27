@@ -3,7 +3,6 @@ import { config } from 'dotenv';
 
 config();
 const CONN_STRING = process.env.ATLAS_CONN_STRING;
-console.log(CONN_STRING);
 
 let db;
 

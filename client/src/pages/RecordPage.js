@@ -126,7 +126,7 @@ const RecordPage = () => {
             {showSearch && <SearchBox record={rec} />}
         </div>
         {authenticated && 
-            <a href={`/record/edit/${rec._id}`} className='btn bg-info mb-3'>Edit Record</a>
+            <a href={`/deaths/record/edit/${rec._id}`} className='btn bg-info mb-3'>Edit Record</a>
         }
         <Alert variant='secondary' className='col-md-6 col-12 text-primary'>
 		    Direct link to this entry: <a className='text-primary' href={`/record/${rec._id}`}>http://www.thezalewskiproject.com/deaths/record/{rec._id}</a>

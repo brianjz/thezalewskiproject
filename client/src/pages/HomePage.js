@@ -1,46 +1,19 @@
-import DeathList from '../components/DeathList';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import axios from 'axios';
-
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
-const url = `${API_ENDPOINT}/api/deaths/count`;
-
 const HomePage = () => {
-    const location = useLocation();
-    const urlYear = location.pathname.substring(1);
-
-    let totalRecordsCount = "over 2500";
-    const [totalRecords, setTotalRecords] = useState(totalRecordsCount);
-    useEffect(() => {
-        const fetchData = async () => {
-            await axios.get(url)
-            .then((response)=>{
-                setTotalRecords(response.data)
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-        }
-    
-        fetchData();
-    }, [totalRecordsCount]);
-
     return (
         <>
-        <h3>Milwaukee Death Index</h3>
-        <p className="alert alert-primary">
-            These are all deaths from papers in Milwaukee, Wisconsin. They are transcribed from items like Death Notices, Burial Listings,
-            Obituaries, and standard Articles. <span className="text-info">At the moment, there are <span className="death-total">{totalRecords} entries.</span></span> These 
-            are all transcribed by one person, me, by hand. I am constantly adding new entries. As with any transcription/indexing project, there are bound to be 
-            occasional misspellings, missed entries, and other errors. Please <a href="http://www.zalewskifamily.net/contact">let me know</a> if you do find one.
-        </p>
-        <DeathList year={urlYear} />
-        <div className="container-fluid" id="footer">
-            <div className="row col-md-12 footer">
-                <small>Copyright &copy;{new Date().getFullYear()} - <a href="http://www.brianzalewski.com/">Brian Zalewski</a> - Made with love using Node.js & React. For comments, issues, or help please <a href="http://www.zalewskifamily.net/contact">contact me</a>.</small>
+        <div id="row col-md-8 col-12">
+            <h2>Welcome to the beginnings of The Zalewski Project.</h2>
+            <p className="lead">We hope to collect as much data on people and families with the surname ZALEWSKI (and its variations) and put it all in one easy place.</p>
+            <div className="alert alert-info" role="alert">The new Interactive Family Tree is now live. Consisiting of mainly Milwaukee Zalewski lines, it connects everyone together as much as possible. Sign up and add your own information and memories!</div>
+            <div className="row mb-4">
+                <div className="col-md-6"><a href="/census" className="w-100 btn btn-primary btn-lg py-4" role="button">Census Records (1880 & 1900)</a></div>
+                <div className="col-md-6"><a href="https://www.zalewskifamily.net/tzp" className="btn btn-primary btn-lg w-100 py-4" role="button">Interactive Family Tree</a></div>
             </div>
-        </div>
+            <div className="row">
+                <div className="col-md-6"><a href="/cemetery" className="btn btn-primary btn-lg w-100 py-4" role="button">Cemetery Records</a></div>
+                <div className="col-md-6"><a href="/deaths" className="btn btn-primary btn-lg w-100 py-4" role="button">Milwaukee Death Index</a></div>
+            </div>
+        </div>        
         </>
     );
 }

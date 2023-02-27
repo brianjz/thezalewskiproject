@@ -34,7 +34,7 @@ class DeathList extends React.Component {
             customBodyRenderLite: (dataIndex) => {
               if(this.state.data[dataIndex]) {
                 if(this.state.data[dataIndex][0] !== 'Loading Data...') {
-                  const linkStr = <Link to={`/record/${this.state.data[dataIndex]._id}`}>{this.state.data[dataIndex].surname}</Link>
+                  const linkStr = <Link to={`/deaths/record/${this.state.data[dataIndex]._id}`}>{this.state.data[dataIndex].surname}</Link>
                   return linkStr;
                 }
               } else {
@@ -74,7 +74,7 @@ class DeathList extends React.Component {
                   Object.keys(this.state.data[dataIndex].sites).forEach((site) => {
                     if(this.state.data[dataIndex].sites[site]) hasLink = true;
                   });
-                  const linkStr = <Link to={`/record/${this.state.data[dataIndex]._id}`}>View Details</Link>
+                  const linkStr = <Link to={`/deaths/record/${this.state.data[dataIndex]._id}`}>View Details</Link>
                   if(hasLink) {
                     return <>{linkStr} <FontAwesomeIcon icon={faCircleCheck} className="text-success" /></>
                   } else {
@@ -96,10 +96,20 @@ class DeathList extends React.Component {
       initialLoad: true
     };
 
-    if(props.year) {
-      this.state.searchType = 'byYear';
-      this.state.searchModifier = props.year;
-      document.title = 'Milwaukee Death Index - ' + props.year;
+    if(props.modifier) {
+      if(props.modifier.indexOf('search') > -1) {
+         let term = props.modifier.split('/')[1]
+         if(term) {
+          this.state.searchType = 'search';
+          this.state.searchModifier = term;
+          document.title = 'Milwaukee Death Index - "' + term + '"';
+          this.initialLoad = false;
+         }
+       } else {
+        this.state.searchType = 'byYear';
+        this.state.searchModifier = props.modifier;
+        document.title = 'Milwaukee Death Index - ' + props.modifier;
+      }
     }
 
     axios.get(`${API_ENDPOINT}/api/deaths/getYears`).then(res => {
@@ -132,7 +142,7 @@ class DeathList extends React.Component {
         }
    
         const url = `${API_ENDPOINT}/api/deaths${page}${sortQS}`;
-        // console.log(url);
+
         const res = await axios.get(url);
         // console.log(res);
         this.setState({ 
@@ -211,9 +221,9 @@ class DeathList extends React.Component {
       });
       if(!this.state.initialLoad) {
         if(year === 'all') {
-          window.history.pushState({}, "", "/")
+          window.history.pushState({}, "", "/deaths")
         } else {
-          window.history.pushState({}, "", year)
+          window.history.pushState({}, "", "/deaths/"+year)
         }
       } else {
         this.setState({initialLoad:false});

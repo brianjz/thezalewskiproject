@@ -273,7 +273,7 @@ class CreateRecord extends Component {
         <Button className="ms-2 mt-2 col-3" variant="success" size="lg" type="submit">
           {this.state.isEdit ? 'Update Record' : 'Create Record'}
         </Button>
-        <a href={`/record/${this.state._id}`} className="btn btn-primary col-3 btn-lg mt-2 ms-2">&laquo; Back to Record</a>
+        <a href={`/deaths/record/${this.state._id}`} className="btn btn-primary col-3 btn-lg mt-2 ms-2">&laquo; Back to Record</a>
       </Form>
       </div>
       <div className="col-12 mt-3">
