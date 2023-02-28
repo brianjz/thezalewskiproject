@@ -14,6 +14,7 @@ import CensusListPage from './pages/CensusListPage';
 import CensusItems from './pages/CensusItems';
 import Person from './pages/PersonPage';
 import CemeteryPage from './pages/CemeteryPage';
+import Footer from './components/Footer';
 
 function App() {
   const siteTitle = "The Zalewski Project - "
@@ -21,7 +22,7 @@ function App() {
     <BrowserRouter>
         <NavBar />
         <Container>
-          <h1 className='text-success'>The Zalewski Project</h1>
+          {/* <h1 className='text-success'>The Zalewski Project</h1> */}
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/deaths/record/add" element={<CreateRecordPage />} />
@@ -40,6 +41,7 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Container>
+        <Footer />
     </BrowserRouter>
   );
 }

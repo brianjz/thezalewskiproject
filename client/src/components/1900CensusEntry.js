@@ -2,216 +2,216 @@ const CensusEntry1900 = (props) => {
     const person = props.person
 
     return (
-		<table class="death-item table table-striped">
+		<table className="death-item table table-striped">
 			<tbody>
-				<tr class="odd">
-					<td class="rowName">Year:</td>
+				<tr className="odd">
+					<td className="rowName">Year:</td>
 
-					<td class="rowEntry">1900</td>
+					<td className="rowEntry">1900</td>
 				</tr>
 				
-				<tr class="odd">
-					<td class="rowName">Ward:</td>
+				<tr className="odd">
+					<td className="rowName">Ward:</td>
 
-					<td class="rowEntry">{person.ward}</td>
+					<td className="rowEntry">{person.ward}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Enumeration District:</td>
+				<tr className="odd">
+					<td className="rowName">Enumeration District:</td>
 
-					<td class="rowEntry">{person.ed}</td>
+					<td className="rowEntry">{person.ed}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Page:</td>
+				<tr className="odd">
+					<td className="rowName">Page:</td>
 
-					<td class="rowEntry">{person.page}</td>
+					<td className="rowEntry">{person.page}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Street:</td>
+				<tr className="odd">
+					<td className="rowName">Street:</td>
 
-					<td class="rowEntry">{person.street}</td>
+					<td className="rowEntry">{person.street}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">House Number:</td>
+				<tr className="odd">
+					<td className="rowName">House Number:</td>
 
-					<td class="rowEntry">{person.house}</td>
+					<td className="rowEntry">{person.house}</td>
 				</tr>
 
-				<tr class="even">
-					<td class="rowName">Dwelling Number:</td>
+				<tr className="even">
+					<td className="rowName">Dwelling Number:</td>
 
-					<td class="rowEntry">{person.dwelling}</td>
+					<td className="rowEntry">{person.dwelling}</td>
 				</tr>
 
-				<tr class="even">
-					<td class="rowName">Family Number:</td>
+				<tr className="even">
+					<td className="rowName">Family Number:</td>
 
-					<td class="rowEntry">{person.family}</td>
+					<td className="rowEntry">{person.family}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Surname:</td>
+				<tr className="odd">
+					<td className="rowName">Surname:</td>
 
-					<td class="rowEntry">{person.surname}</td>
+					<td className="rowEntry">{person.surname}</td>
 				</tr>
 
-				<tr class="even">
-					<td class="rowName">Given Names:</td>
+				<tr className="even">
+					<td className="rowName">Given Names:</td>
 
-					<td class="rowEntry">{person.firstname}</td>
+					<td className="rowEntry">{person.firstname}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Color/Race:</td>
+				<tr className="odd">
+					<td className="rowName">Color/Race:</td>
 
-					<td class="rowEntry">{person.color}</td>
+					<td className="rowEntry">{person.color}</td>
 				</tr>
 
-				<tr class="even">
-					<td class="rowName">Sex/Gender:</td>
+				<tr className="even">
+					<td className="rowName">Sex/Gender:</td>
 
-					<td class="rowEntry">{person.sex}</td>
+					<td className="rowEntry">{person.sex}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Age:</td>
+				<tr className="odd">
+					<td className="rowName">Age:</td>
 
-					<td class="rowEntry">{person.age}</td>
+					<td className="rowEntry">{person.age}</td>
 				</tr>
 
-				<tr class="even">
-					<td class="rowName">Birth Month:</td>
+				<tr className="even">
+					<td className="rowName">Birth Month:</td>
 
-					<td class="rowEntry">{person.birthmonth}</td>
+					<td className="rowEntry">{person.birthmonth}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Birth Year:</td>
+				<tr className="odd">
+					<td className="rowName">Birth Year:</td>
 
-					<td class="rowEntry">{person.birthyear}</td>
+					<td className="rowEntry">{person.birthyear}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Relation to Head of Household:</td>
+				<tr className="odd">
+					<td className="rowName">Relation to Head of Household:</td>
 
-					<td class="rowEntry">{person.relation}</td>
+					<td className="rowEntry">{person.relation}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Civil:</td>
+				<tr className="odd">
+					<td className="rowName">Civil:</td>
 
-					<td class="rowEntry">{person.civil}</td>
+					<td className="rowEntry">{person.civil}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Years Married:</td>
+				<tr className="odd">
+					<td className="rowName">Years Married:</td>
 
-					<td class="rowEntry">{person.marriedyears}</td>
+					<td className="rowEntry">{person.marriedyears}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Children Born:</td>
+				<tr className="odd">
+					<td className="rowName">Children Born:</td>
 
-					<td class="rowEntry">{person.childrenborn}</td>
+					<td className="rowEntry">{person.childrenborn}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Children Still Living:</td>
+				<tr className="odd">
+					<td className="rowName">Children Still Living:</td>
 
-					<td class="rowEntry">{person.childrenliving}</td>
+					<td className="rowEntry">{person.childrenliving}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Birthplace:</td>
+				<tr className="odd">
+					<td className="rowName">Birthplace:</td>
 
-					<td class="rowEntry">{person.birth}</td>
+					<td className="rowEntry">{person.birth}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Father's Birthplace:</td>
+				<tr className="odd">
+					<td className="rowName">Father's Birthplace:</td>
 
-					<td class="rowEntry">{person.fatherbirth}</td>
+					<td className="rowEntry">{person.fatherbirth}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Mother's Birthplace:</td>
+				<tr className="odd">
+					<td className="rowName">Mother's Birthplace:</td>
 
-					<td class="rowEntry">{person.motherbirth}</td>
+					<td className="rowEntry">{person.motherbirth}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Immigration Year:</td>
+				<tr className="odd">
+					<td className="rowName">Immigration Year:</td>
 
-					<td class="rowEntry">{person.immigration}</td>
+					<td className="rowEntry">{person.immigration}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Years in US:</td>
+				<tr className="odd">
+					<td className="rowName">Years in US:</td>
 
-					<td class="rowEntry">{person.yearsinus}</td>
+					<td className="rowEntry">{person.yearsinus}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Naturalization:</td>
+				<tr className="odd">
+					<td className="rowName">Naturalization:</td>
 
-					<td class="rowEntry">{person.naturalization}</td>
+					<td className="rowEntry">{person.naturalization}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Profession:</td>
+				<tr className="odd">
+					<td className="rowName">Profession:</td>
 
-					<td class="rowEntry">{person.profession}</td>
+					<td className="rowEntry">{person.profession}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Months Unemployed:</td>
+				<tr className="odd">
+					<td className="rowName">Months Unemployed:</td>
 
-					<td class="rowEntry">{person.unemployed}</td>
+					<td className="rowEntry">{person.unemployed}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Can Read?:</td>
+				<tr className="odd">
+					<td className="rowName">Can Read?:</td>
 
-					<td class="rowEntry">{person._read}</td>
+					<td className="rowEntry">{person._read}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Can Write?:</td>
+				<tr className="odd">
+					<td className="rowName">Can Write?:</td>
 
-					<td class="rowEntry">{person._write}</td>
+					<td className="rowEntry">{person._write}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Can Speak English?:</td>
+				<tr className="odd">
+					<td className="rowName">Can Speak English?:</td>
 
-					<td class="rowEntry">{person.speakenglish}</td>
+					<td className="rowEntry">{person.speakenglish}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Own or Rent:</td>
+				<tr className="odd">
+					<td className="rowName">Own or Rent:</td>
 
-					<td class="rowEntry">{person.ownorrent}</td>
+					<td className="rowEntry">{person.ownorrent}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Own or Mortgage:</td>
+				<tr className="odd">
+					<td className="rowName">Own or Mortgage:</td>
 
-					<td class="rowEntry">{person.ownormortgage}</td>
+					<td className="rowEntry">{person.ownormortgage}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Farm or House:</td>
+				<tr className="odd">
+					<td className="rowName">Farm or House:</td>
 
-					<td class="rowEntry">{person.farmorhouse}</td>
+					<td className="rowEntry">{person.farmorhouse}</td>
 				</tr>
 
-				<tr class="odd">
-					<td class="rowName">Farm Schedule:</td>
+				<tr className="odd">
+					<td className="rowName">Farm Schedule:</td>
 
-					<td class="rowEntry">{person.farmschedule}</td>
+					<td className="rowEntry">{person.farmschedule}</td>
 				</tr>
 
 			</tbody>

@@ -16,7 +16,6 @@ const CensusItems = (props) => {
             .then((response)=>{
                 setPersonList(response.data.records)
                 setIsLoading(false)
-                // console.log(response)
             })
             .catch((error) => {
                 console.log(error)
@@ -34,14 +33,12 @@ const CensusItems = (props) => {
 
     if(isLoading) {
         return 'Loading...';
-    } else {
-        console.log(personList)
     }
 
     return (
         <>
         <CensusBreadcrumb year={year} city={city} state={state} />
-        <Alert variant="primary"><h5>Click on a person to view their detailed entry.</h5></Alert>
+        <Alert variant="primary">Click on a person to view their detailed entry.</Alert>
         {personList.map(edfam => {
             const [ed, family] = edfam._id.split('-');
             return ( 

@@ -14,6 +14,7 @@ const CensusListPage = (props) => {
 
     return (
         <>
+        <h2>Census Records</h2>
         <CensusBreadcrumb year={year} state={state} />
         {year ? 
             <>
@@ -22,12 +23,12 @@ const CensusListPage = (props) => {
             </>
             : 
             <>
+            <div className="row">
             <p>Currently, we only have data for the census years of 1880 and 1900, but we hope to get more added in the future.</p>
-            <div id="censusInfo" className="row col-md-6 col-12">
-                <div class="row category-boxes">
-                    <a class="col-4 btn btn-primary btn-block btn-lrg me-2" href="/census/1880">1880</a>
-                    <a class="col-4 btn btn-primary btn-block btn-lrg" href="/census/1900">1900</a>
-                </div>
+            <div id="censusInfo" className="col-md-6 col-12">
+                <a className="col-md-6 col-12 btn btn-primary btn-lg me-2 mb-2 p-4" href="/census/1880">1880</a>
+                <a className="col-md-6 col-12 btn btn-primary btn-lg p-4" href="/census/1900">1900</a>
+            </div>
             </div>
             </>
         }

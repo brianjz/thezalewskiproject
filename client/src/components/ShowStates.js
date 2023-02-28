@@ -16,7 +16,6 @@ const ShowStates = (props) => {
                 .then((response)=>{
                     setCityList(response.data.stateinfo)
                     setIsLoading(false)
-                    // console.log(response)
                 })
                 .catch((error) => {
                     console.log(error)
@@ -26,7 +25,6 @@ const ShowStates = (props) => {
                 .then((response)=>{
                     setStateList(response.data.states)
                     setIsLoading(false)
-                    // console.log(response)
                 })
                 .catch((error) => {
                     console.log(error)
@@ -39,19 +37,17 @@ const ShowStates = (props) => {
 
     if(isLoading) {
         return 'Loading...';
-    } else {
-        // console.log(cityList)
     }
 
 
     return (
-        <div className="row row-cols-3 g-3">
+        <div className="row row-cols-md-3 g-2">
             {state ?
                 cityList.map((county) => {
                     const countyName = Object.keys(county)[0]
                     return (
-                    <div>
-                    <Card as="div" key={countyName} id={`cities-${countyName.replace(' ', '-').toLowerCase()}`} className="text-center col p-0 border-dark">
+                    <div key={countyName}>
+                    <Card as="div" id={`cities-${countyName.replace(' ', '-').toLowerCase()}`} className="text-center col p-0 border-dark">
                         <Card.Header className="bg-info text-light fw-bold">{countyName} County</Card.Header>
                         <Card.Body>
                         {county[countyName].map(city => {
@@ -69,8 +65,8 @@ const ShowStates = (props) => {
             :
                     stateList.map(state => {
                         return (
-                            <div class="col-md-4 mb-2">
-                            <a key={state} className="btn btn-primary btn-lg w-100 py-4" href={`/census/${year}/${state.replace(' ', '-')}`}>{state}</a>
+                            <div key={state} className="col-md-4 mb-1">
+                                <a className="btn btn-primary btn-lg w-100 py-4" href={`/census/${year}/${state.replace(' ', '-')}`}>{state}</a>
                             </div>
                         )
                     })

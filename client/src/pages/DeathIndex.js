@@ -37,11 +37,6 @@ const DeathIndex = () => {
             occasional misspellings, missed entries, and other errors. Please <a href="http://www.zalewskifamily.net/contact">let me know</a> if you do find one.
         </p>
         <DeathList modifier={urlYear} />
-        <div className="container-fluid" id="footer">
-            <div className="row col-md-12 footer">
-                <small>Copyright &copy;{new Date().getFullYear()} - <a href="http://www.brianzalewski.com/">Brian Zalewski</a> - Made with love using Node.js & React. For comments, issues, or help please <a href="http://www.zalewskifamily.net/contact">contact me</a>.</small>
-            </div>
-        </div>
         </>
     );
 }
