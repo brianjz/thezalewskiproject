@@ -10,6 +10,15 @@ const StyledPerson = styled.div`
     min-width: 500px;
     position: relative;
 
+    @media (max-width: 768px) {
+        width: 100%;
+        min-width: initial;
+        margin: 10px 0;
+        &:not(.self) {
+            padding-top: 30px;
+        }
+    }
+
     &.father {
         border-color: blue;
     }
@@ -22,7 +31,7 @@ const StyledPerson = styled.div`
 
     &:hover {
         transition: var(--transition);
-        box-shadow: 10px 10px 14px 0px var(--navy-shadow);
+        box-shadow: 0px 8px 10px var(--navy-shadow);
     }
 
     h3 {
@@ -112,7 +121,7 @@ const ConnectionPerson = (props) => {
     const birthDate = processDateString(person.BirthDate);
     const deathDate = processDateString(person.DeathDate);
     const relClass = relation ? relation.toLowerCase() : "self"
-    const hasSpouse = (person.Spouses && Object.keys(person.Spouses).length > 0) ? true : false // set this way since no spouse arrives as empty array, but with spouse(s) arrives as object
+    const hasSpouse = (person.Spouses && Object.keys(person.Spouses).length > 0) ? true : false // being set this way since no spouse arrives as empty array, but with spouse(s) arrives as object
     const spouses = []
     if(hasSpouse && relation === "self") { // only show public spouses
         Object.keys(person.Spouses).forEach((sp) => {

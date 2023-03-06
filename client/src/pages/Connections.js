@@ -13,6 +13,11 @@ const StyledPrimary = styled.div`
     display: grid;
     grid-template-columns: 50% 20px 20px;
     justify-content: center;
+    @media (max-width: 768px) {
+        display: block;
+        margin-top: 100px;
+    }
+
 `;
 
 const StyledParents = styled.div`
@@ -20,6 +25,9 @@ const StyledParents = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     justify-content: center;
+    @media (max-width: 768px) {
+        display: block;
+    }
 `;
 
 const StyledSeparator = styled.div`
@@ -89,7 +97,7 @@ const Connection = (props) => {
     }
 
     const person = personData.person
-    const hasParents = Object.keys(person.Parents).length > 0 ? true : false // set this way since no parents arrives as empty array, but with parents arrives as object
+    const hasParents = Object.keys(person.Parents).length > 0 ? true : false // being set this way since no parents arrives as empty array, but with parents arrives as object
 
     return (
         <>
