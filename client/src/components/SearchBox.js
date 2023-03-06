@@ -15,7 +15,7 @@ const SearchBox = (props) => {
 
         if(siteInfo.title !== '') {
             const linkIcon = <FontAwesomeIcon icon={siteIcon} className="text-primary" />
-            const htmlData = (
+            let htmlData = (
                 <a href={siteInfo.link} 
                     target="_blank" 
                     className={"site-link mb-2 me-2 btn " + btnClass} 
@@ -27,6 +27,18 @@ const SearchBox = (props) => {
                 </a>
             )
             sitesBox.push(htmlData);
+            if(site === "wikitree" && siteInfo.exists) {
+                htmlData = ( 
+                    <a href={`/connections/${rec.sites[site]}`} 
+                        className={"site-link mb-2 me-2 btn bg-info"} 
+                        data-id={rec.sites[site]} 
+                        data-site={site}
+                        key={rec.sites[site]+"tzp"}>
+                            {linkIcon} The Zalewski Project
+                    </a>
+                )               
+                sitesBox.push(htmlData);
+            }
         }
     });
 

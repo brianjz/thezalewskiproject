@@ -22,8 +22,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Route Handlers 
 import mdRouter from '../routes/milwaukeedeaths.js';
 import censusRouter from '../routes/census.js';
+import connRouter from '../routes/connections.js';
 app.use('/api/deaths', mdRouter);
 app.use('/api/census', censusRouter);
+app.use('/api/connections', connRouter);
 
 // --- Authentication ---
 app.post('/api/auth/signin', async (req, res) => {
@@ -65,7 +67,7 @@ app.get('/api/auth/me', async (req, res) => {
         res.status(200).json({ authenticated: true, user: decoded.id });
     }
     catch (err) {
-        console.log('POST auth/me, Something Went Wrong', err);
+        // console.log('POST auth/me, Something Went Wrong', err);
         res.status(400).json(defaultReturnObject);
     }
 })

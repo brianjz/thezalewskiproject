@@ -58,6 +58,7 @@ const RecordPage = () => {
 
     return (
         <>
+        <h3>{rec.givennames} {rec.surname}</h3>
 		<table className="death-item col-md-6 col-12 mb-2">
 			<tbody>
 				<tr className="odd">
