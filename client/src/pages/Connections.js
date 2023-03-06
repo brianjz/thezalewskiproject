@@ -63,7 +63,7 @@ const Connection = (props) => {
     if(personId !== personIdent) { setPersonIdent(personId) }
     useEffect(() => {
         const fetchData = async () => {
-            if(process.env.NODE_ENV !== "production") {
+            // if(process.env.NODE_ENV !== "production") {
                 await axios.get(`/api/connections/getPerson/${personIdent}`)
                 .then((response)=>{
                     setPerson(response.data)
@@ -72,12 +72,12 @@ const Connection = (props) => {
                 .catch((error) => {
                     console.log(error)
                 })
-            } else {
-                setIsLoading(false);
-                setPerson(Frank);
+            // } else {
+            //     setIsLoading(false);
+            //     setPerson(Frank);
                 // setPerson(AnnaTest);
                 // setPerson(William);
-            }
+            // }
         }
 
         fetchData();
