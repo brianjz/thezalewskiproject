@@ -18,6 +18,7 @@ const variables = css`
     --pink: #f57dff;
     --blue: #57cbff;
     --dark-blue: #064884;
+    --secondary: #2c3e50;
 
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;
@@ -33,6 +34,7 @@ const variables = css`
     --fz-heading: 32px;
 
     --border-radius: 4px;
+    --border-radius-button: 10px;
 
     --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
     --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);

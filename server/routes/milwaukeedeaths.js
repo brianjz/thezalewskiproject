@@ -46,8 +46,7 @@ mdRouter.get("/search/:term/:page?", async (req, res) => {
 });
 
 mdRouter.get("/date/:year(\\d+)/:page(\\d+)?", async (req, res) => {
-    const { year } = req.params;
-    const page = req.params.page;
+    const { year, page } = req.params;
     let offset = 0;
     if(page && page > 0) {
         offset = pageLength * (page - 1);

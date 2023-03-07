@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 import wikitree from '../images/wikitree.png'
+import { processDateString } from '../lib/common';
 
 const StyledPerson = styled.div`
     border: 1px solid #000;
@@ -29,11 +30,8 @@ const StyledPerson = styled.div`
         }
     }
 
-    &:hover {
-        transition: var(--transition);
-        box-shadow: 0px 8px 10px var(--navy-shadow);
-    }
-
+    ${({ theme }) => theme.mixins.boxShadow};
+    
     h3 {
         font-size: var(--fz-xxl);
 
@@ -102,21 +100,6 @@ const StyledPerson = styled.div`
 
 const ConnectionPerson = (props) => {
     const { person, relation } = props
-
-    const processDateString = (dateStr, yearOnly = false) => {
-        let retDate = 'Unknown';
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        if(dateStr) {
-            if(yearOnly) {
-                retDate = dateStr === "0000-00-00" ? '????' : dateStr.substring(0, 4)
-            } else {
-                retDate = dateStr === "0000-00-00" ? 'Unknown' : dateStr.indexOf("-00-00") > -1 ? dateStr.substring(0, 4)
-                    : new Date(dateStr).toLocaleDateString(undefined, dateOptions) 
-            }
-        }
-
-        return retDate;
-}
 
     const birthDate = processDateString(person.BirthDate);
     const deathDate = processDateString(person.DeathDate);

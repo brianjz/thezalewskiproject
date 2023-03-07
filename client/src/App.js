@@ -18,6 +18,7 @@ import CemeteryPage from './pages/CemeteryPage';
 import Footer from './components/Footer';
 import Connection from './pages/Connections';
 import { ThemeProvider } from 'styled-components';
+import WikiTree from './pages/WikiTree';
 
 function App() {
   const siteTitle = "The Zalewski Project - "
@@ -43,6 +44,7 @@ function App() {
               <Route path="/census/:year/:state/:city" element={<CensusItems title={`${siteTitle}Census`} />} />
               <Route path="/census/person/:personId" element={<Person title={siteTitle} />} />
               <Route path="/connections/:personId" element={<Connection />} />
+              <Route path="/wikitree/:page?" element={<WikiTree />} />
               <Route path="/cemetery" element={<CemeteryPage />} />
               <Route path={APP_ROUTES.SIGN_IN} element={<SignIn />} />
               <Route path="*" element={<NotFoundPage />} />

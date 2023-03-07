@@ -31,3 +31,19 @@ export async function getAuthenticatedUser() {
     return defaultReturnObject;
   }
 }
+
+export const processDateString = (dateStr, yearOnly = false) => {
+  let retDate = 'Unknown';
+  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  if(dateStr) {
+      if(yearOnly) {
+          retDate = dateStr === "0000-00-00" ? '????' : dateStr.substring(0, 4)
+      } else {
+          retDate = dateStr === "0000-00-00" ? 'Unknown' 
+                      : dateStr.indexOf("-00") > -1 ? dateStr.substring(0, 4)
+                          : new Date(dateStr).toLocaleDateString(undefined, dateOptions) 
+      }
+  }
+
+  return retDate;
+}
