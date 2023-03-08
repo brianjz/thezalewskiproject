@@ -1,18 +1,59 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Card } from "react-bootstrap";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const StyledButtons = styled.div`
+    ${({ theme }) => theme.mixins.mainButtons};
+`;
+
+const StyledCounties = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    text-align: center;
+
+    @media (max-width:768px) {
+        grid-template-columns: 1fr;
+    }
+
+    h4 {
+        margin: 0 0 10px 0;
+        font-size: 1.2em;
+    }
+    .county {
+        ${({ theme }) => theme.mixins.boxShadow};
+        border: 2px solid #666;
+        border-radius: var(--border-radius-button);
+        padding: 10px;
+    }
+    .citylist {
+        ${({ theme }) => theme.mixins.mainButtons};
+        grid-template-columns: 1fr !important;
+        .button a {
+            border: 2px solid #666;
+            box-shadow: none;
+            &:hover,&:focus { 
+                box-shadow: none; 
+                border-color: var(--blue);
+                color: var(--slate);
+            }
+        }
+    }
+`;
 
 const ShowStates = (props) => {
-    const {state, year}  = props;
+    const { state, year, onChangeState } = props
 
-    let [stateList, setStateList] = useState('')
-    let [cityList, setCityList] = useState('')
-    let [isLoading, setIsLoading] = useState(true);
+    const [stateList, setStateList] = useState([])
+    const [cityList, setCityList] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
+    
     // fetches data
     useEffect(() => {
         const fetchData = async () => {
-            if(state) {
-                await axios.get(`/api/census/${year}/${state}`)
+            if(props.state) {
+                await axios.get(`/api/census/${props.year}/${props.state}`)
                 .then((response)=>{
                     setCityList(response.data.stateinfo)
                     setIsLoading(false)
@@ -21,7 +62,7 @@ const ShowStates = (props) => {
                     console.log(error)
                 })
             } else {
-                await axios.get(`/api/census/${year}/getStates`)
+                await axios.get(`/api/census/${props.year}/getStates`)
                 .then((response)=>{
                     setStateList(response.data.states)
                     setIsLoading(false)
@@ -33,45 +74,39 @@ const ShowStates = (props) => {
         }
 
         fetchData();
-    }, [year, state]);
+    }, [props.state, props.year]);
 
     if(isLoading) {
         return 'Loading...';
     }
 
-
     return (
-        <div className="row row-cols-md-3 g-2">
-            {state ?
-                cityList.map((county) => {
-                    const countyName = Object.keys(county)[0]
-                    return (
-                    <div key={countyName}>
-                    <Card as="div" id={`cities-${countyName.replace(' ', '-').toLowerCase()}`} className="text-center col p-0 border-dark">
-                        <Card.Header className="bg-info text-light fw-bold">{countyName} County</Card.Header>
-                        <Card.Body>
-                        {county[countyName].map(city => {
-                            return (
-                                <Card.Text key={city}>
-                                    <a className="btn btn-primary btn-lg w-100 py-4" href={`/census/${year}/${state}/${city.replace(' ', '-')}`}>{city}</a>
-                                </Card.Text>
-                            )
-                        })}
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    )
-                })
-            :
-                    stateList.map(state => {
+            state ?
+            <StyledCounties>
+            {cityList.map((county) => {
+                const countyName = Object.keys(county)[0]
+                return (
+                <div className="county" key={countyName}>
+                    <h4>{countyName} County</h4>
+                    <div className="citylist">
+                    {county[countyName].map(city => {
                         return (
-                            <div key={state} className="col-md-4 mb-1">
-                                <a className="btn btn-primary btn-lg w-100 py-4" href={`/census/${year}/${state.replace(' ', '-')}`}>{state}</a>
-                            </div>
+                            <div key={city} className="button"><Link to={`/census/${year}/${state}/${city.replace(' ', '-')}`}>{city}</Link></div>
                         )
-                    })
-            }
-        </div>
+                    })}
+                    </div>
+                </div>
+                )
+            })}
+            </StyledCounties>
+            :
+            <StyledButtons>
+                {stateList.map(state => {
+                   return (
+                      <div key={state} className="button"><Link data-state={state} onClick={onChangeState} to={`/census/${year}/${state.replace(' ', '-')}`}>{state}</Link></div>
+                    )
+                 })}
+            </StyledButtons>
     )
 
 }

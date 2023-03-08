@@ -11,7 +11,7 @@ import { ZalewskiList } from "../testdata/TestProfiles";
 const StyledData = styled.div`
     position: absolute;
     right: 10px;
-    top: 80px;
+    top: 60px;
     text-align: center;
     color: var(--slate);
 
@@ -27,7 +27,7 @@ const StyledInfo = styled.div`
     padding: 10px;
     margin: 20px 0;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1080px) {
         margin-top: 100px
     }
 
@@ -38,15 +38,16 @@ const StyledInfo = styled.div`
 
 const StyledList = styled.ul`
     list-style: none;
+    padding: 0;
     li {
         padding: 5px 2px;
         border-bottom: 1px solid var(--light-slate);
         a {
-            color: var(--dark-blue);
+            color: var(--black);
 
             &:hover,
             &:focus {
-                color: var(--slate)
+                color: var(--dark-blue)
             }
         }
 

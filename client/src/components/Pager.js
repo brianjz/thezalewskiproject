@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const StyledPager = styled.ul`
     display: flex;
     list-style: none;
+    padding: 0;
 
     li {
         width: 40px;
@@ -13,7 +14,11 @@ const StyledPager = styled.ul`
         font-size: var(--fz-xxl);
         border: 1px solid #000;
         background-color: white;
-        margin: 10px 10px;
+        /* margin: 10px 10px; */
+
+        &:not(:last-child) {
+            border-right-width: 0;
+        }
 
         @media (max-width: 768px) {
             padding: 1px 5px 5px 3px;

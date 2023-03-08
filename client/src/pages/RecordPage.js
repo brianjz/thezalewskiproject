@@ -2,11 +2,52 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUser } from "../lib/customHooks";
 import axios from 'axios';
-import { Alert } from 'react-bootstrap';
 import { parseIndividual } from '../lib/processRecord';
 import SearchBox from '../components/SearchBox';
+import styled from 'styled-components';
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
+
+const StyledRecord = styled.div`
+    width: 50%;
+
+    @media (max-width: 1080px) {
+        width: 100%;
+    }
+`;
+
+const StyledSearch = styled.div`
+    background-color: var(--primary);
+    color: white;
+    padding: 5px;
+    margin-top: 15px;
+
+    h5 {
+        margin: 0;
+        padding: 10px 5px;
+    }
+`;
+
+const StyledTable = styled.table`
+    font-size: 1.5em; 
+    border-spacing: 3px; 
+    border-collapse: initial;
+    width: 100%;
+
+    td {
+        padding: 5px 10px; 
+
+        &.rowName { 
+            width: 35%; 
+            background-color: var(--blue); 
+            font-weight:bold; 
+        }
+        &.rowEntry { 
+            width: 65%; 
+            background-color: var(--light-slate); 
+        }
+    }
+`;
 
 const RecordPage = () => {
     const { authenticated } = useUser(true);
@@ -57,9 +98,9 @@ const RecordPage = () => {
     }
 
     return (
-        <>
+        <StyledRecord>
         <h3>{rec.givennames} {rec.surname}</h3>
-		<table className="death-item col-md-6 col-12 mb-2">
+		<StyledTable className="death-item">
 			<tbody>
 				<tr className="odd">
 					<td className="rowName">Date:</td>
@@ -121,18 +162,18 @@ const RecordPage = () => {
 					<td className="rowEntry">{rec.notes}</td>
 				</tr>
 			</tbody>
-		</table>
-        <div className="col-md-6 col-12 alert alert-primary">
+		</StyledTable>
+        <StyledSearch className="alertbox">
             <h5>Find {rec.givennames} {rec.surname} on these sites:</h5>
             {showSearch && <SearchBox record={rec} />}
-        </div>
+        </StyledSearch>
         {authenticated && 
             <a href={`/deaths/record/edit/${rec._id}`} className='btn bg-info mb-3'>Edit Record</a>
         }
-        <Alert variant='secondary' className='col-md-6 col-12 text-primary'>
+        {/* <Alert variant='secondary' className='col-md-6 col-12 text-primary'>
 		    Direct link to this entry: <a className='text-primary' href={`/record/${rec._id}`}>http://www.thezalewskiproject.com/deaths/record/{rec._id}</a>
-        </Alert>
-        </>
+        </Alert> */}
+        </StyledRecord>
     )
 }
 

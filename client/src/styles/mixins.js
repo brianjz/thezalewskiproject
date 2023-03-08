@@ -58,7 +58,7 @@ const mixins = {
     text-decoration-skip-ink: auto;
     position: relative;
     transition: var(--transition);
-    color: var(--green);
+    color: var(--dark-blue);
     &:hover,
     &:focus,
     &:active {
@@ -85,8 +85,61 @@ const mixins = {
     }
   `,
 
-  button,
+  alertBox: css`
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    position: relative;
 
+    &.info {
+      background-color: var(--lower-blue);
+      color: white;
+    }
+    &.primary {
+      background-color: var(--primary);
+      color: white;
+    }
+  `,
+
+  mainButtons: css`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
+    }
+
+    .button {
+      @media (max-width: 2768px) {
+        display: flex;
+      }
+      a {
+          display: block;
+          background-color: var(--secondary);
+          padding: 20px;
+          border-radius: var(--border-radius-button);
+          border: 1px solid black;
+          text-decoration: none;
+          color: white;
+          text-align: center;
+          width: 100%;
+
+          box-shadow: 0px 2px 10px var(--navy-shadow);
+          transition: var(--transition);
+
+        &:hover,
+        &:focus {
+          box-shadow: 0px 8px 10px var(--navy-shadow);
+        }
+      }
+    }
+  `,
+
+  button,
   smallButton: css`
     color: var(--green);
     background-color: transparent;
@@ -131,6 +184,16 @@ const mixins = {
     &:after {
       display: none !important;
     }
+  `,
+
+  alwaysBoxShadow: css`
+    box-shadow: 0px 2px 10px var(--navy-shadow);
+    transition: var(--transition);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0px 8px 10px var(--navy-shadow);
+  }
   `,
 
   boxShadow: css`

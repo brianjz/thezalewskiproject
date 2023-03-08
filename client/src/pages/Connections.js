@@ -13,7 +13,7 @@ const StyledPrimary = styled.div`
     display: grid;
     grid-template-columns: 50% 20px 20px;
     justify-content: center;
-    @media (max-width: 768px) {
+    @media (max-width: 1080px) {
         display: block;
         margin-top: 100px;
     }
@@ -25,7 +25,7 @@ const StyledParents = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     justify-content: center;
-    @media (max-width: 768px) {
+    @media (max-width: 1080px) {
         display: block;
     }
 `;
@@ -45,7 +45,7 @@ const StyledSeparator = styled.div`
 const StyledData = styled.div`
     position: absolute;
     right: 10px;
-    top: 80px;
+    top: 60px;
     text-align: center;
     color: var(--slate);
 

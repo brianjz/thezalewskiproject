@@ -1,8 +1,10 @@
+import { StyledTable } from "../pages/PersonPage";
+
 const CensusEntry1900 = (props) => {
     const person = props.person
 
     return (
-		<table className="death-item table table-striped">
+		<StyledTable>
 			<tbody>
 				<tr className="odd">
 					<td className="rowName">Year:</td>
@@ -215,7 +217,7 @@ const CensusEntry1900 = (props) => {
 				</tr>
 
 			</tbody>
-		</table>
+		</StyledTable>
     )
 }
 

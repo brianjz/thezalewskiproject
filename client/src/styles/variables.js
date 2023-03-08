@@ -18,7 +18,11 @@ const variables = css`
     --pink: #f57dff;
     --blue: #57cbff;
     --dark-blue: #064884;
+    --lower-blue: #3498db;
     --secondary: #2c3e50;
+    --success: rgba(68, 145, 130, 1);
+    --primary: rgba(44,62,80,1);
+    --dark-gray: #535d64;
 
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;

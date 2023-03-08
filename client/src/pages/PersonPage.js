@@ -4,6 +4,32 @@ import { useEffect, useState } from 'react';
 import { useParams } from "react-router";
 import axios from 'axios';
 import CensusBreadcrumb from "../components/CensusBreadcrumb";
+import styled from "styled-components";
+
+export const StyledTable = styled.table`
+    font-size: 1.3em; 
+    border-spacing: 3px; 
+    border-collapse: initial;
+    width: 100%;
+
+    @media (max-width:768px) {
+        font-size: 1em;
+    }
+
+	td {
+		padding: 5px;
+
+        &.rowName { 
+            width: 35%; 
+            background-color: var(--blue); 
+            font-weight:bold; 
+        }
+        &.rowEntry { 
+            width: 65%; 
+            background-color: var(--light-slate); 
+        }
+	}
+`;
 
 const Person = (props) => {
     const { personId } = useParams()
@@ -40,7 +66,7 @@ const Person = (props) => {
 
     return (
         <>
-        <CensusBreadcrumb year={person.year} city={person.city} state={person.state} person={`${person.firstname} ${person.surname}`} />
+        <CensusBreadcrumb year={person.year} city={person.city} state={person.state} person={`${person.firstname} ${person.surname}`} style={StyledTable} />
         {person.year === 1900 ? 
             <CensusEntry1900 person={person} />
         :

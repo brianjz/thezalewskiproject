@@ -1,11 +1,11 @@
 import GlobalStyle from './styles/GlobalStyles';
 import theme from './styles/theme';
-import './bootstrap.min.css';
+// import './bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { APP_ROUTES } from './lib/constants';
 import HomePage from './pages/HomePage';
 import NavBar from './components/NavBar';
-import { Container } from 'react-bootstrap';
+// import { Container } from 'react-bootstrap';
 import RecordPage from './pages/RecordPage';
 import SignIn from './components/SignIn';
 import NotFoundPage from './pages/NotFoundPage';
@@ -19,6 +19,17 @@ import Footer from './components/Footer';
 import Connection from './pages/Connections';
 import { ThemeProvider } from 'styled-components';
 import WikiTree from './pages/WikiTree';
+import styled from 'styled-components'
+
+const StyledContainer = styled.div`
+    --gutter-x: 1.5rem;
+    --gutter-y: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: calc(var(--gutter-x)*.5);
+    padding-right: calc(var(--gutter-x)*.5);
+    width: 100%;
+`;
 
 function App() {
   const siteTitle = "The Zalewski Project - "
@@ -28,7 +39,7 @@ function App() {
           <GlobalStyle />
 
           <NavBar />
-          <Container>
+          <StyledContainer className="main">
             {/* <h1 className='text-success'>The Zalewski Project</h1> */}
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -49,7 +60,7 @@ function App() {
               <Route path={APP_ROUTES.SIGN_IN} element={<SignIn />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
-          </Container>
+          </StyledContainer>
           <Footer />
         </ThemeProvider>
     </BrowserRouter>
