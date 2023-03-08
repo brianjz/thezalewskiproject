@@ -6,7 +6,7 @@ import { processDateString } from "../lib/common";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Pager from "../components/Pager";
 // testing
-import { ZalewskiList } from "../testdata/TestProfiles";
+// import { ZalewskiList } from "../testdata/TestProfiles";
 
 const StyledData = styled.div`
     position: absolute;
@@ -67,7 +67,7 @@ const WikiTree = (props) => {
     if(page !== curPage) { setCurPage(page) }
     useEffect(() => {
         const fetchData = async () => {
-            if(process.env.NODE_ENV !== "production") {
+            // if(process.env.NODE_ENV === "production") {
                 await axios.get(`/api/connections/getZalewskiPeople/${curPage}`)
                 .then((response)=>{
                     setPersonList(response.data[0])
@@ -76,10 +76,10 @@ const WikiTree = (props) => {
                 .catch((error) => {
                     console.log(error)
                 })
-            } else {
-                setIsLoading(false);
-                setPersonList(ZalewskiList[0])
-            }
+            // } else {
+            //     setIsLoading(false);
+            //     setPersonList(ZalewskiList[0])
+            // }
         }
 
         fetchData();
