@@ -3,7 +3,7 @@ const { verify } = jsonwebtoken;
 
 const ensureToken = (req, res, next) => {
     var bearerHeader = req.headers["authorization"] 
-    console.log(bearerHeader);
+    // console.log(bearerHeader);
 
     if(typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(" ")

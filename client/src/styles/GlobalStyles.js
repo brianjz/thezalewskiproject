@@ -31,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
 
         .main {
             margin: 0 auto;
+            margin-top: var(--below-navbar);
             width: 100%;
             max-width: 1600px;
             min-height: 100vh;
@@ -40,6 +41,10 @@ const GlobalStyle = createGlobalStyle`
                 padding: 0 10px;
             }
         }
+    }
+
+    .button {
+        ${({ theme }) => theme.mixins.button};
     }
 
     a.inline-link {

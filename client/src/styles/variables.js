@@ -23,6 +23,7 @@ const variables = css`
     --success: rgba(68, 145, 130, 1);
     --primary: rgba(44,62,80,1);
     --dark-gray: #535d64;
+    --danger: #e74c3c;
 
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;
@@ -37,7 +38,9 @@ const variables = css`
     --fz-xxl: 22px;
     --fz-heading: 32px;
 
-    --border-radius: 4px;
+    --below-navbar: 60px;
+
+    --border-radius: 6px;
     --border-radius-button: 10px;
 
     --easing: cubic-bezier(0.645, 0.045, 0.355, 1);

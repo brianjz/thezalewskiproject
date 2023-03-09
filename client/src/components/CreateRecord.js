@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import SearchBox from "./SearchBox";
 import axios from "axios";
 
@@ -10,6 +11,41 @@ const authConfig = {
       'Authorization': `Bearer: ${TOKEN}`
   }
 }
+const StyledForm = styled.form`
+display: grid;
+grid-template-columns: 1fr 1fr;
+width: 80%;
+
+input.submit {
+  width: initial;
+  font-size: 1.3rem;
+}
+`;
+
+const StyledSearchBox = styled.div`
+padding: 20px;
+margin: 20px;
+background-color: var(--dark-slate);
+border-radius: var(--border-radius);
+width: 80%;
+`;
+
+const StyledGroup = styled.div`
+padding: 10px;
+
+label {
+  padding-right: 10px;
+}
+input, select {
+  border-radius: var(--border-radius);
+  height: 3rem;
+  width: 100%;
+  border: 1px solid #666;
+  font-size: 1.3rem;
+  padding: 10px;
+  background-color: #ccc;
+}
+`;
 
 class CreateRecord extends Component {
     constructor(props) {
@@ -179,107 +215,108 @@ class CreateRecord extends Component {
     return (<div className="form-wrapper row">
       <div className="col-md-8 col-12 bg-secondary bg-opacity-50 p-3 rounded">
       {(this.state.message !== '') && 
-          <Alert variant='success' className='col-md-12 col-12'>
+          <div className="alertbox success">
             {this.state.message}
-          </Alert>
+          </div>
       }
       {(this.state.error !== '') && 
-          <Alert variant='danger' className='col-md-12 col-12'>
+          <div className="alertbox danger">
             {this.state.error}
-          </Alert>
+          </div>
       }
-      <Form className="form row" onSubmit={this.onSubmit}>
-      <Form.Group className="col-6" controlId="Date">
-          <Form.Label>Posted Date</Form.Label>
-          <Form.Control type="text" value={this.state.date} placeholder="YYYY-MM-DD" onChange={this.onChangeDate} />
-        </Form.Group>
+      <StyledForm className="form row" onSubmit={this.onSubmit}>
+        <StyledGroup className="col-6" controlId="Date">
+            <label>Posted Date</label>
+            <input type="text" value={this.state.date} placeholder="YYYY-MM-DD" onChange={this.onChangeDate} />
+          </StyledGroup>
 
-      <Form.Group className="col-6" controlid="GivenNames">
-          <Form.Label>Given Name(s)</Form.Label>
-          <Form.Control type="text" value={this.state.givennames} onChange={this.onChangeGivenNames} />
-        </Form.Group>
+        <StyledGroup className="col-6" controlid="GivenNames">
+            <label>Given Name(s)</label>
+            <input type="text" value={this.state.givennames} onChange={this.onChangeGivenNames} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="Title">
-          <Form.Label>Title</Form.Label>
-          <Form.Control type="text" value={this.state.title} onChange={this.onChangeTitle} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="Title">
+            <label>Title</label>
+            <input type="text" value={this.state.title} onChange={this.onChangeTitle} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="Surname">
-          <Form.Label>Surname</Form.Label>
-          <Form.Control type="text" value={this.state.surname} onChange={this.onChangeSurname} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="Surname">
+            <label>Surname</label>
+            <input type="text" value={this.state.surname} onChange={this.onChangeSurname} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="MaidenName">
-          <Form.Label>Maiden Name</Form.Label>
-          <Form.Control type="text" value={this.state.maidenname} onChange={this.onChangeMaidenName} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="MaidenName">
+            <label>Maiden Name</label>
+            <input type="text" value={this.state.maidenname} onChange={this.onChangeMaidenName} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="Paper">
-          <Form.Label>Paper</Form.Label>
-          <Form.Select value={this.state.paper} onChange={this.onChangePaper}>
-            <option value="">-- Select Paper --</option>
-            <option value="Journal">Milwaukee Journal</option>
-          </Form.Select>
-          {/* <Form.Control type="text" value={this.state.paper} /> */}
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="Paper">
+            <label>Paper</label>
+            <select value={this.state.paper} onChange={this.onChangePaper}>
+              <option value="">-- Select Paper --</option>
+              <option value="Journal">Milwaukee Journal</option>
+            </select>
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="Type">
-          <Form.Label>Type</Form.Label>
-          <Form.Select value={this.state.type} onChange={this.onChangeType}>
-            <option value="">-- Select Type --</option>
-            <option value="Article">Article</option>
-            <option value="Burial">Burial</option>
-            <option value="Death Notice">Death Notice</option>
-            <option value="Obituary">Obituary</option>
-          </Form.Select>
-          {/* <Form.Control type="text" value={this.state.type} onChange={this.onChangeType} /> */}
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="Type">
+            <label>Type</label>
+            <select value={this.state.type} onChange={this.onChangeType}>
+              <option value="">-- Select Type --</option>
+              <option value="Article">Article</option>
+              <option value="Burial">Burial</option>
+              <option value="Death Notice">Death Notice</option>
+              <option value="Obituary">Obituary</option>
+            </select>
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="Age">
-          <Form.Label>Age</Form.Label>
-          <Form.Control type="text" value={this.state.age} onChange={this.onChangeAge} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="Age">
+            <label>Age</label>
+            <input type="text" value={this.state.age} onChange={this.onChangeAge} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="Address">
-          <Form.Label>Address</Form.Label>
-          <Form.Control type="text" value={this.state.address} onChange={this.onChangeAddress} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="Address">
+            <label>Address</label>
+            <input type="text" value={this.state.address} onChange={this.onChangeAddress} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="Notes">
-          <Form.Label>Notes</Form.Label>
-          <Form.Control type="text" value={this.state.notes} onChange={this.onChangeNotes} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="Notes">
+            <label>Notes</label>
+            <input type="text" value={this.state.notes} onChange={this.onChangeNotes} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="FindAGrave">
-          <Form.Label>Find-A-Grave ID</Form.Label>
-          <Form.Control type="text" value={this.state.sites.findagrave} onChange={this.onChangeFindAGrave} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="FindAGrave">
+            <label>Find-A-Grave ID</label>
+            <input type="text" value={this.state.sites.findagrave || ''} onChange={this.onChangeFindAGrave} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="WikiTree">
-          <Form.Label>WikiTree ID</Form.Label>
-          <Form.Control type="text" placeholder="Surname-##" value={this.state.sites.wikitree} onChange={this.onChangeWikiTree} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="WikiTree">
+            <label>WikiTree ID</label>
+            <input type="text" placeholder="Surname-##" value={this.state.sites.wikitree || ''} onChange={this.onChangeWikiTree} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="CemOrg">
-          <Form.Label>Cemeteries.Org ID</Form.Label>
-          <Form.Control type="text" value={this.state.sites.cemeteriesorg} onChange={this.onChangeCemOrg} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="CemOrg">
+            <label>Cemeteries.Org ID</label>
+            <input type="text" value={this.state.sites.cemeteriesorg || ''} onChange={this.onChangeCemOrg} />
+          </StyledGroup>
 
-        <Form.Group className="col-6" controlid="Billion">
-          <Form.Label>BillionGraves ID</Form.Label>
-          <Form.Control type="text" placeholder="Name/ID" value={this.state.sites.billiongraves} onChange={this.onChangeBillion} />
-        </Form.Group>
+          <StyledGroup className="col-6" controlid="Billion">
+            <label>BillionGraves ID</label>
+            <input type="text" placeholder="Name/ID" value={this.state.sites.billiongraves || ''} onChange={this.onChangeBillion} />
+          </StyledGroup>
 
-        <Button className="ms-2 mt-2 col-3" variant="success" size="lg" type="submit">
-          {this.state.isEdit ? 'Update Record' : 'Create Record'}
-        </Button>
-        <a href={`/deaths/record/${this.state._id}`} className="btn btn-primary col-3 btn-lg mt-2 ms-2">&laquo; Back to Record</a>
-      </Form>
+          <div class="button">
+            <input className="submit" type="submit" value={this.state.isEdit ? 'Update Record' : 'Create Record'} />
+          </div>
+      </StyledForm>
       </div>
-      <div className="col-12 mt-3">
+      <StyledSearchBox>
         <SearchBox record={this.state} />
+      </StyledSearchBox>
+      <div class="button">
+        <Link className="single" to={`/deaths/record/${this.state._id}`}>&laquo; Back to Record</Link>
       </div>
-      </div>);
+      </div>
+    );
   }
 }
 

@@ -73,7 +73,7 @@ app.get('/api/auth/me', async (req, res) => {
 })
 
 app.get(/^(?!\/api).+/, (req, res) => {
-    console.log('Default');
+    // console.log('Default');
     res.sendFile(path.join(__dirname, '../public/index.html'));
     // res.sendFile(path.join(__dirname, '../../client/public/index.html')); //DEV
 })
@@ -112,7 +112,8 @@ app.post('/api/record/edit/:recId', ensureToken, async (req, res) => {
                         'cemeteriesorg': record.sites.cemeteriesorg,
                         'billiongraves': record.sites.billiongraves,
                     }
-                }
+                },
+                $currentDate: { lastModified: true }
             }
         );
     } catch(e) {

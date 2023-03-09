@@ -1,28 +1,33 @@
 import { css } from 'styled-components';
 
-const button = css`
-  color: var(--green);
-  background-color: transparent;
-  border: 1px solid var(--green);
-  border-radius: var(--border-radius);
-  font-size: var(--fz-xs);
-  font-family: var(--font-mono);
-  line-height: 1;
-  text-decoration: none;
-  cursor: pointer;
-  transition: var(--transition);
-  padding: 1.25rem 1.75rem;
+  const button = css`
+    @media (max-width: 768px) {
+      display: flex;
+    }
+    a, input {
+        display: block;
+        background-color: var(--secondary);
+        padding: 20px;
+        border-radius: var(--border-radius-button);
+        border: 1px solid black;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        width: 100%;
 
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: var(--green-tint);
-    outline: none;
-  }
-  &:after {
-    display: none !important;
-  }
-`;
+        box-shadow: 0px 2px 10px var(--navy-shadow);
+        transition: var(--transition);
+
+      &:hover,
+      &:focus {
+        box-shadow: 0px 8px 10px var(--navy-shadow);
+      }
+
+      &.single {
+        width: 20rem;
+      }
+    }
+  `;
 
 const mixins = {
   flexCenter: css`
@@ -89,14 +94,28 @@ const mixins = {
     border-radius: var(--border-radius);
     margin-bottom: 1rem;
     padding: 1rem;
-    position: relative;
 
     &.info {
       background-color: var(--lower-blue);
       color: white;
+      a {
+        color: white;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
     &.primary {
       background-color: var(--primary);
+      color: white;
+    }
+    &.success {
+      background-color: var(--success);
+      color: white;
+    }
+    &.danger {
+      background-color: var(--danger);
       color: white;
     }
   `,
@@ -114,32 +133,13 @@ const mixins = {
     }
 
     .button {
-      @media (max-width: 2768px) {
-        display: flex;
-      }
-      a {
-          display: block;
-          background-color: var(--secondary);
-          padding: 20px;
-          border-radius: var(--border-radius-button);
-          border: 1px solid black;
-          text-decoration: none;
-          color: white;
-          text-align: center;
-          width: 100%;
-
-          box-shadow: 0px 2px 10px var(--navy-shadow);
-          transition: var(--transition);
-
-        &:hover,
-        &:focus {
-          box-shadow: 0px 8px 10px var(--navy-shadow);
-        }
-      }
+      ${button}
     }
   `,
 
   button,
+
+  // button,
   smallButton: css`
     color: var(--green);
     background-color: transparent;

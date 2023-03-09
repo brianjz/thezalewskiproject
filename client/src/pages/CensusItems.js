@@ -77,7 +77,7 @@ const CensusItems = (props) => {
     return (
         <>
         <CensusBreadcrumb year={year} city={city} state={state} />
-        <div class="alertbox info">Click on a person to view their detailed entry.</div>
+        <div className="alertbox info">Click on a person to view their detailed entry.</div>
         {personList.map(edfam => {
             const [ed, family] = edfam._id.split('-');
             return ( 
@@ -85,8 +85,8 @@ const CensusItems = (props) => {
                     <h4>Enumeration District: {ed} - Family #{family}</h4>
                     {edfam.people.map(person => {
                         return (
-                            <div className="persoin">
-                                <Link key={person._id} to={`/census/person/${person._id}`}>
+                            <div key={person._id} className="persoin">
+                                <Link to={`/census/person/${person._id}`}>
                                     {person.firstname} {person.surname}</Link> - {person.age}y - {person.relation}
                             </div>
                         )    

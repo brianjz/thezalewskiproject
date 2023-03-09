@@ -28,7 +28,7 @@ const StyledInfo = styled.div`
     margin: 20px 0;
 
     @media (max-width: 1080px) {
-        margin-top: 100px
+        margin-top: calc(var(--below-navbar) + 100px);
     }
 
     .total {
@@ -59,6 +59,7 @@ const StyledList = styled.ul`
 
 const WikiTree = (props) => {
     const { page = 1 } = useParams()
+    const PageSize = 50;
     let navigate = useNavigate()
 
     let [curPage, setCurPage] = useState(page)
@@ -68,7 +69,7 @@ const WikiTree = (props) => {
     useEffect(() => {
         const fetchData = async () => {
             // if(process.env.NODE_ENV === "production") {
-                await axios.get(`/api/connections/getZalewskiPeople/${curPage}`)
+                await axios.get(`/api/connections/getZalewskiPeople/${curPage}?pagesize=${PageSize}`)
                 .then((response)=>{
                     setPersonList(response.data[0])
                     setIsLoading(false)
@@ -85,18 +86,30 @@ const WikiTree = (props) => {
         fetchData();
     }, [curPage]);
 
-    const updateList = (event) => {
-        event.preventDefault();
-        const newPage = event.target.dataset.page;
-        setCurPage(newPage);
+    const [mobile, setMobile] = useState(window.innerWidth <= 500);
+
+    const handleWindowSizeChange = () => {
+        setMobile(window.innerWidth <= 500);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+    }
+    }, []);
+
+    const updateList = (newPage) => {
+        // event.preventDefault();
+        // const newPage = event.target.dataset.page;
+        console.log('NP: ', newPage);
+        setCurPage(parseInt(newPage));
         navigate(`/wikitree/${newPage}`)
     }
 
     if(isLoading) {
         return 'Loading Data...';
     }
-
-    const totalPages = Math.ceil(personList.total / personList.limit)
 
     return (
         <>
@@ -106,12 +119,19 @@ const WikiTree = (props) => {
             profiles on WikiTree of people born with the Zalewski (or variant) surname.</p>
             <p>They are listed here sorted by date of birth.</p>
         </StyledInfo>
-        <Pager currentPage={page} totalPages={totalPages} onClicked={updateList} />
+        <Pager
+            className="pagination-bar"
+            currentPage={parseInt(curPage)}
+            totalCount={personList.total}
+            pageSize={PageSize}
+            onPageChange={page => updateList(page)}
+            siblingCount="1"
+            isMobile={mobile}
+        />
         <StyledList>
             {personList.matches.map((person) => {
-                console.log(person.Privacy)
                 return (
-                    person.FirstName && //if cannot see FirstName data, then profile is probably an active/living user
+                    person.FirstName && // if cannot see FirstName data, then profile is probably an active/living user
                     <li key={person.Name}>
                         <Link to={`/connections/${person.Name}`}>{person.LongName}</Link> - 
                             ({processDateString(person.BirthDate, true)}{person.BirthLocation && ` at ${person.BirthLocation}`} -&nbsp;
@@ -120,7 +140,15 @@ const WikiTree = (props) => {
                 )
             })}
         </StyledList>
-        <Pager currentPage={page} totalPages={totalPages} onClicked={updateList} />
+        <Pager
+            className="pagination-bar"
+            currentPage={parseInt(curPage)}
+            totalCount={personList.total}
+            pageSize={PageSize}
+            onPageChange={page => updateList(page)}
+            siblingCount="1"
+            isMobile={mobile}
+        />
         </>
     )
 }

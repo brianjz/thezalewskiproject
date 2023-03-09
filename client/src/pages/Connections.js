@@ -4,6 +4,7 @@ import ConnectionPerson from "../components/ConnectionPerson";
 import styled from 'styled-components'
 import { useParams, useNavigate } from "react-router";
 import wikitree from '../images/wikitree-text.png'
+import ScrollToTop from "../lib/ScrollToTop";
 
 // Testing
 // eslint-disable-next-line
@@ -15,7 +16,7 @@ const StyledPrimary = styled.div`
     justify-content: center;
     @media (max-width: 1080px) {
         display: block;
-        margin-top: 100px;
+        margin-top: calc(var(--below-navbar) + 100px)
     }
 
 `;
@@ -101,6 +102,7 @@ const Connection = (props) => {
 
     return (
         <>
+        <ScrollToTop />
         <StyledData>Data provided by<br /><img src={wikitree} alt="WikiTree" /></StyledData>
         <StyledPrimary>
             <ConnectionPerson person={person} relation="self" onChange={changePerson} />

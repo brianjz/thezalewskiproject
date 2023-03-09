@@ -5,6 +5,7 @@ import axios from 'axios';
 import { parseIndividual } from '../lib/processRecord';
 import SearchBox from '../components/SearchBox';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 
@@ -167,12 +168,12 @@ const RecordPage = () => {
             <h5>Find {rec.givennames} {rec.surname} on these sites:</h5>
             {showSearch && <SearchBox record={rec} />}
         </StyledSearch>
+        <div className='alertbox info'>
+		    Direct link to this entry: <Link to={`/deaths/record/${rec._id}`}>http://www.thezalewskiproject.com/deaths/record/{rec._id}</Link>
+        </div>
         {authenticated && 
-            <a href={`/deaths/record/edit/${rec._id}`} className='btn bg-info mb-3'>Edit Record</a>
+            <div className="button"><Link to={`/deaths/record/edit/${rec._id}`}>Edit Record</Link></div>
         }
-        {/* <Alert variant='secondary' className='col-md-6 col-12 text-primary'>
-		    Direct link to this entry: <a className='text-primary' href={`/record/${rec._id}`}>http://www.thezalewskiproject.com/deaths/record/{rec._id}</a>
-        </Alert> */}
         </StyledRecord>
     )
 }

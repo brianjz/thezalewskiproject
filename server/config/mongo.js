@@ -13,6 +13,7 @@ async function connectToDb(cb) {
 
         db = client.db('thezalewskiproject');
         console.log('DB connected');
+        CONN_STRING.indexOf('127.0.0.1') > -1 && console.log('--> Local DB');
     } catch(e) {
         console.error(e);
     }

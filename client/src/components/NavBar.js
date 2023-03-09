@@ -4,10 +4,12 @@ import { useState } from 'react';
 
 const StyledNavBar = styled.div`
     ${({ theme }) => theme.mixins.flexBetween};
-    position: relative;
+    position: fixed;
+    top: 0;
     width: 100%;
     height: 50px;
     background-color: var(--blue);
+    z-index: 100;
 `;
 
 const StyledNav = styled.ul`
@@ -39,7 +41,7 @@ const StyledNav = styled.ul`
         top: 0;
         left: 0;
         bottom: 0;
-        z-index: 6;
+        z-index: 26;
         box-shadow: 15px 10px 30px -15px var(--navy-shadow);
         transform: translateX(${props => (props.dropMenuOpen ? 0 : 100)}vw);
         visibility: ${props => (props.dropMenuOpen ? 'visible' : 'hidden')};
@@ -68,6 +70,7 @@ const StyledBurger = styled.div`
     justify-content: space-around;
     flex-flow: column nowrap;
     z-index: 10;
+    cursor: pointer;
 
     @media (max-width: 1080px) {
         display:flex;
@@ -91,7 +94,6 @@ const StyledBurger = styled.div`
         &.burger3{
             transform: ${props => (props.dropMenuOpen ? 'translateX(6px) translateY(-4px) rotate(-43deg)' : 'translateX(0) translateY(0) rotate(0)')};
         }
-
     }
 `;
 
@@ -101,7 +103,11 @@ const StyledSiteName = styled.div`
     font-size: 1.3em;
 
     @media (max-width: 1080px) {
-        display: none;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+    }
+    @media (max-width:768px) {
+        margin-right: 5rem;
     }
 `;
 

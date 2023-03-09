@@ -9,12 +9,19 @@ const StyledButtons = styled.div`
     }
 `;
 
+const StyledAnnoucement = styled.p`
+    font-weight: 600;
+    border: 2px solid #999;
+    border-width: 2px 0;
+    padding: 5px 0;
+`;
+
 const HomePage = () => {
     return (
         <>
-        <h2>Welcome to the beginnings of The Zalewski Project.</h2>
-        <p className="lead">We hope to collect as much data on people and families with the surname ZALEWSKI (and its variations) and put it all in one easy place.</p>
-        <div className="alertbox info">The new Interactive Family Tree is now live. Consisiting of mainly Milwaukee Zalewski lines, it connects everyone together as much as possible. Sign up and add your own information and memories!</div>
+        <h4>Welcome to the beginnings of The Zalewski Project.</h4>
+        <p className="lead">We hope to aggregate as much data on historical people and families with the surname ZALEWSKI (and its variations) and put it all in one easy place.</p>
+        <StyledAnnoucement>Now includes live WikiTree listings and profiles (with connections)</StyledAnnoucement>
         <StyledButtons>
             <div className="button"><Link to="/wikitree">WikiTree Profiles</Link></div>
             <div className="button"><Link to="/census">Census Records (1880 & 1900)</Link></div>
