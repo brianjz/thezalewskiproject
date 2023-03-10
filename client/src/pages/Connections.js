@@ -5,10 +5,7 @@ import styled from 'styled-components'
 import { useParams, useNavigate } from "react-router";
 import wikitree from '../images/wikitree-text.png'
 import ScrollToTop from "../lib/ScrollToTop";
-
-// Testing
-// eslint-disable-next-line
-import { Frank, AnnaTest, William } from "../testdata/TestProfiles";
+import { Link } from "react-router-dom";
 
 const StyledPrimary = styled.div`
     display: grid;
@@ -64,21 +61,14 @@ const Connection = (props) => {
     if(personId !== personIdent) { setPersonIdent(personId) }
     useEffect(() => {
         const fetchData = async () => {
-            // if(process.env.NODE_ENV !== "production") {
-                await axios.get(`/api/connections/getPerson/${personIdent}`)
-                .then((response)=>{
-                    setPerson(response.data)
-                    setIsLoading(false)
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
-            // } else {
-            //     setIsLoading(false);
-            //     setPerson(Frank);
-                // setPerson(AnnaTest);
-                // setPerson(William);
-            // }
+            await axios.get(`/api/connections/getPerson/${personIdent}`)
+            .then((response)=>{
+                setPerson(response.data)
+                setIsLoading(false)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         }
 
         fetchData();
@@ -93,12 +83,23 @@ const Connection = (props) => {
 
     if(isLoading) {
         return 'Loading...'
-    } else if(personData.status !== 0) {
-        return "Invalid WikiTree ID"
+    } else if(personData.status !== 0 || !personData.person.LastNameAtBirth) {
+        return ( 
+            <div class="alertbox danger">Invalid WikiTree ID 
+                or Private Profile. <Link 
+                    to={'..'} 
+                    onClick={(e) => {
+                        e.preventDefault();
+                        navigate(-1);
+                    }}
+                    >Go back.
+                </Link>
+              </div> 
+        )
     }
 
     const person = personData.person
-    const hasParents = Object.keys(person.Parents).length > 0 ? true : false // being set this way since no parents arrives as empty array, but with parents arrives as object
+    const hasParents = (person.Parents && Object.keys(person.Parents).length > 0) ? true : false // being set this way since no parents arrives as empty array, but with parents arrives as object
 
     return (
         <>

@@ -133,5 +133,4 @@ config/db.config.js
 models
 .vscode
 web.config
-client/package-lock.json
-server/package-lock.json
+package-lock.json

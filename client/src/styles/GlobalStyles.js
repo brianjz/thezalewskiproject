@@ -50,6 +50,19 @@ const GlobalStyle = createGlobalStyle`
     a.inline-link {
         ${({ theme }) => theme.mixins.inlineLink};
     }
+    #navBar a.inline-link {
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--white);
+            & > * {
+                color: var(--white) !important;
+            }
+        }
+        &:after {
+            background-color: var(--white);
+        }
+    }
     .search-death { cursor: pointer; }
     .death-total { font-size: 1.4em;}
     .alertbox { 

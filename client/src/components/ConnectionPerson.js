@@ -22,21 +22,33 @@ const StyledPerson = styled.div`
 
     &.father {
         border-color: blue;
+        img.profile-photo {
+            padding: 15px 10px 10px 10px;
+        }
     }
     &.mother {
         border-color: red;
         .relation { 
             background-color: red;
         }
+        img.profile-photo {
+            padding: 15px 10px 10px 10px;
+        }
     }
 
     ${({ theme }) => theme.mixins.boxShadow};
+
+    img.profile-photo {
+        float: right;
+        padding: 10px;
+    }
     
     h3 {
-        font-size: var(--fz-xxl);
+        font-size: 1.3em;
 
         a {
             padding: 0 5px;
+            color: var(--dark-blue);
             img {
                 width: 24px;
                 height: 24px;
@@ -52,6 +64,10 @@ const StyledPerson = styled.div`
         span {
             font-weight: bold;
         }
+    }
+
+    h5 {
+        margin: 0 0 10px 0;
     }
 
     .children {
@@ -124,13 +140,18 @@ const ConnectionPerson = (props) => {
         })
     }
 
+    const fullName = (person.RealName && person.RealName !== person.FirstName) ? person.LongName + " (" + person.RealName + ")" : person.LongName
+
     return (
         <StyledPerson className={relClass}>
+            {person.Photo &&
+                <img className="profile-photo" src={`https://www.wikitree.com${person.PhotoData.url}`} alt={person.LongName} />
+            }
             {(relation && relation !== "self") && <div className="relation">{relation}</div>}
             <h3>
                 { relation === "self" 
-                ? <>{person.LongName}</>
-                : <Link to={`/connections/${person.Name}`} onClick={props.onChange}>{person.LongName}</Link>
+                ? fullName
+                : <Link to={`/connections/${person.Name}`} className="inline-link" onClick={props.onChange}>{fullName}</Link>
                 }
                 <a href={`https://www.wikitree.com/wiki/${person.Name}`} rel="nofollow"><img className="iconLink" src={wikitree} alt="WikiTree" title="WikiTree Profile" /></a>
             </h3>

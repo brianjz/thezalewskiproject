@@ -67,13 +67,13 @@ const mixins = {
     &:hover,
     &:focus,
     &:active {
-      color: var(--white);
+      color: var(--lower-blue);
       outline: 0;
       &:after {
         width: 100%;
       }
       & > * {
-        color: var(--white) !important;
+        color: var(--lower-blue) !important;
         transition: var(--transition);
       }
     }
@@ -84,7 +84,7 @@ const mixins = {
       height: 2px;
       position: relative;
       bottom: 0.05em;
-      background-color: var(--white);
+      background-color: var(--lower-blue);
       transition: var(--transition);
       opacity: 0.9;
     }
@@ -117,6 +117,13 @@ const mixins = {
     &.danger {
       background-color: var(--danger);
       color: white;
+      a {
+        color: white;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
   `,
 

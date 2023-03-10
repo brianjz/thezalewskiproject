@@ -120,7 +120,7 @@ const NavBar = () => {
     }
 
     return (
-        <StyledNavBar>
+        <StyledNavBar id="navBar">
             <StyledBurger dropMenuOpen={hamburgerOpen ? true : false } onClick={toggleHamburger}>
                 <div className="burger burger1"></div>
                 <div className="burger burger2"></div>

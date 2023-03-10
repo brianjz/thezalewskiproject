@@ -4,7 +4,7 @@ import { db } from '../config/mongo.js';
 
 const connRouter = express.Router();
 
-const personFields = 'Id,Name,FirstName,LastNameCurrent,LastNameAtBirth,BirthDate,DeathDate,BirthLocation,DeathLocation,Gender,PhotoData,IsLiving,Touched,Manager,Father,Mother,Connected,Derived.LongName,Privacy,Parents,Spouses,HasChildren,Children'
+const personFields = 'Id,Name,FirstName,LastNameCurrent,LastNameAtBirth,RealName,BirthDate,DeathDate,BirthLocation,DeathLocation,Gender,Photo,PhotoData,IsLiving,Touched,Manager,Father,Mother,Connected,Derived.LongName,Privacy,Parents,Spouses,HasChildren,Children'
 const searchFields = 'Id,LastNameAtBirth,LastNameCurrent,FirstName,Name,BirthDate,DeathDate,BirthLocation,DeathLocation,Derived.LongName,Manager,IsLiving,Privacy'
 
 connRouter.get("/getPerson/:id", async (req, res) => {
@@ -24,8 +24,10 @@ connRouter.get("/getPerson/:id", async (req, res) => {
       fetch(`https://api.wikitree.com/api.php?action=getPerson&key=${id}&fields=${personFields}`)
         .then(response => response.json())
         .then(person => {
-          person[0].lastModified = new Date()
-          db.collection('wikitree').replaceOne(curId, person[0], { upsert: true })
+          if(person[0].status === 0) { // don't cache invalid users
+            person[0].lastModified = new Date()
+            db.collection('wikitree').replaceOne(curId, person[0], { upsert: true })
+          }
           res.send(person[0]);
         })
         .catch(e => console.error(e));    
