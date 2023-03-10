@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from 'styled-components'
 import wikitree from '../images/wikitree-text.png'
-import { processDateString } from "../lib/common";
+import { useDocumentTitle, processDateString } from "../lib/common";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Pager from "../components/Pager";
 // testing
@@ -106,6 +106,8 @@ const WikiTree = (props) => {
         setCurPage(parseInt(newPage));
         navigate(`/wikitree/${newPage}`)
     }
+
+    useDocumentTitle('WikiTree Profiles');
 
     if(isLoading) {
         return 'Loading Data...';

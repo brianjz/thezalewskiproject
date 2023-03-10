@@ -115,7 +115,6 @@ const NavBar = () => {
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
     const toggleHamburger = () => {
-        console.log('HOpen? ', !hamburgerOpen)
         setHamburgerOpen(!hamburgerOpen)
     }
 

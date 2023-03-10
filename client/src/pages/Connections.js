@@ -4,8 +4,8 @@ import ConnectionPerson from "../components/ConnectionPerson";
 import styled from 'styled-components'
 import { useParams, useNavigate } from "react-router";
 import wikitree from '../images/wikitree-text.png'
-import ScrollToTop from "../lib/ScrollToTop";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../lib/common";
 
 const StyledPrimary = styled.div`
     display: grid;
@@ -52,6 +52,16 @@ const StyledData = styled.div`
     }
 `;
 
+const StyledReturn = styled.div`
+    display: none;
+    position: absolute;
+    left: 10px;
+    top: 60px;
+    @media (max-width: 1080px) {
+        display: block;
+    }
+`
+
 const Connection = (props) => {
     let { personId } = useParams()
     let navigate = useNavigate()
@@ -81,6 +91,7 @@ const Connection = (props) => {
         navigate(`/connections/${id}`)
     }
 
+    useDocumentTitle("WikiTree Profile")
     if(isLoading) {
         return 'Loading...'
     } else if(personData.status !== 0 || !personData.person.LastNameAtBirth) {
@@ -100,10 +111,10 @@ const Connection = (props) => {
 
     const person = personData.person
     const hasParents = (person.Parents && Object.keys(person.Parents).length > 0) ? true : false // being set this way since no parents arrives as empty array, but with parents arrives as object
-
+    document.title = person.LongName + " - WikiTree - The Zalewski Project"
     return (
         <>
-        <ScrollToTop />
+        <StyledReturn><Link to="/wikitree">&laquo; Return to Profiles</Link></StyledReturn>
         <StyledData>Data provided by<br /><img src={wikitree} alt="WikiTree" /></StyledData>
         <StyledPrimary>
             <ConnectionPerson person={person} relation="self" onChange={changePerson} />

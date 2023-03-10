@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
             width: 100%;
             max-width: 1600px;
             min-height: 100vh;
-            padding: 0 50px;
+            padding: 0 100px;
 
             @media (max-width:768px) {
                 padding: 0 10px;

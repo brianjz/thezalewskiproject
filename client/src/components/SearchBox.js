@@ -19,11 +19,9 @@ const StyledSearchBox = styled.div`
         border: 1px solid var(--slate);
         text-decoration: none;
 
-        .site-icon {
-            color: var(--lightest-navy)
-        }
         &:after {
             margin-left: 22px;
+            background-color: var(--white);
         }
         &:hover,
         &:focus,
@@ -33,12 +31,19 @@ const StyledSearchBox = styled.div`
             &:after {
                 width: calc(100% - 22px) !important;
             }
+            .site-icon {
+                color: var(--white) !important;
+            }
+
         }
         &.exists {
             background-color: var(--success);
         }
         &.tzp {
             background-color: var(--lower-blue);
+        }
+        .site-icon {
+            color: var(--lightest-navy);
         }
     }
 `;
@@ -58,7 +63,7 @@ const SearchBox = (props) => {
             if(site === "wikitree" && siteInfo.exists) {
                 htmlData = ( 
                     <Link to={`/connections/${rec.sites[site]}`} 
-                        className={`search-link inline-link tzp`} 
+                        className={`inline-link search-link tzp`} 
                         data-id={rec.sites[site]} 
                         data-site={site}
                         key={rec.sites[site]+"tzp"}>
@@ -70,7 +75,7 @@ const SearchBox = (props) => {
                 let htmlData = (
                     <a href={siteInfo.link} 
                         target="_blank" 
-                        className={`search-link inline-link ${btnClass}`} 
+                        className={`inline-link search-link ${btnClass}`} 
                         data-id={rec.sites[site]} 
                         data-site={site}
                         key={rec.sites[site]+site}

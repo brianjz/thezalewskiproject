@@ -4,6 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 import CensusBreadcrumb from "../components/CensusBreadcrumb";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../lib/common";
 
 const StyledFamilyGroup = styled.div`
     border: 1px solid black;
@@ -63,12 +64,11 @@ const CensusItems = (props) => {
 
         fetchData();
 
-        let title = props.title ?? "The Zalewski Project"
-        title = year ? title.replace('- ', '- '+year+' ') : title
-        title = city ? title.replace(year, year + ' ' + city) : title
-        document.title = title
-    }, [year, state, city, props.title]);
+    }, [year, state, city, props]);
 
+    let title = "Census Records"
+    title = city ? year + " " + city + " " + title : title
+    useDocumentTitle(title)
 
     if(isLoading) {
         return 'Loading...';

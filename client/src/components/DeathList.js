@@ -102,13 +102,13 @@ class DeathList extends React.Component {
          if(term) {
           this.state.searchType = 'search';
           this.state.searchModifier = term;
-          document.title = 'Milwaukee Death Index - "' + term + '"';
+          document.title = 'Milwaukee Death Index - "' + term + '" - The Zalewski Project';
           this.initialLoad = false;
          }
        } else {
         this.state.searchType = 'byYear';
         this.state.searchModifier = props.modifier;
-        document.title = 'Milwaukee Death Index - ' + props.modifier;
+        document.title = 'Milwaukee Death Index - ' + props.modifier + ' - The Zalewski Project';
       }
     }
 
@@ -133,6 +133,7 @@ class DeathList extends React.Component {
           this.byYear(this.state.searchModifier, page);
           return;
         }
+        document.title = 'Milwaukee Death Index - The Zalewski Project';
         this.setState({ isLoading: true });
         page = '/' + (page + 1);
         let sortQS = '';
@@ -228,7 +229,7 @@ class DeathList extends React.Component {
       } else {
         this.setState({initialLoad:false});
       }
-      document.title = 'Milwaukee Death Index - ' + year;
+      document.title = 'Milwaukee Death Index - ' + year + ' - The Zalewski Project';
     }
 
     changePage = (page, sortOrder) => {

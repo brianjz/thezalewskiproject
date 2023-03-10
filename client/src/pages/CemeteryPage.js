@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../lib/common";
 
 const StyledButtons = styled.div`
     ${({ theme }) => theme.mixins.mainButtons};
 `;
 
 const CemeteryPage = () => {
+    useDocumentTitle('Cemetery Records')
     return (
         <div id="row col-md-12">
             <h2>Cemetery Records</h2>

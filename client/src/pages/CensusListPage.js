@@ -1,9 +1,10 @@
 import { useParams } from "react-router";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ShowStates from "../components/ShowStates";
 import CensusBreadcrumb from "../components/CensusBreadcrumb";
 import styled from "styled-components";
+import { useDocumentTitle } from "../lib/common";
 
 const StyledButtons = styled.div`
     ${({ theme }) => theme.mixins.mainButtons};
@@ -19,12 +20,10 @@ const CensusListPage = (props) => {
 
     let navigate = useNavigate();
 
-    useEffect(() => {
-        let pgtitle = props.title ?? "The Zalewski Project"
-        pgtitle = curYear ? pgtitle.replace('- ', '- '+curYear+' ') : pgtitle
-        pgtitle = curStateName ? pgtitle.replace(curYear, curYear + ' ' + curStateName) : pgtitle
-        document.title = pgtitle
-    }, [props.title, curYear, curStateName])
+    let pgtitle = "Census Records"
+    pgtitle = curYear ? curYear + " " + pgtitle : pgtitle
+    pgtitle = curStateName ? pgtitle.replace(curYear, curYear + ' ' + curStateName) : pgtitle
+    useDocumentTitle(pgtitle)
 
     const changeState = (event) => {
         event.preventDefault();

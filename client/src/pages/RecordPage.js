@@ -85,7 +85,7 @@ const RecordPage = () => {
 
     let docTitle = cleanFirstName ? rec.givennames+' ' : ''
     docTitle += cleanLastName ? rec.surname : ''
-    document.title = docTitle + ' - Milwaukee Death Index';
+    document.title = docTitle + ' - Milwaukee Death Index - The Zalewski Project';
 
     let entryFound = false;
     Object.keys(rec.sites).forEach((site) => {

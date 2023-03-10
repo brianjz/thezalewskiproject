@@ -7,7 +7,6 @@ const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 const url = `${API_ENDPOINT}/api/deaths/count`;
 
 const DeathIndex = () => {
-    document.title = "Milwaukee Death Index"
     const location = useLocation();
     const urlYear = location.pathname.replace('/deaths', '').substring(1);
 

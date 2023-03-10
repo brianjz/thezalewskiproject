@@ -1,5 +1,6 @@
 import { API_ROUTES } from './constants';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 export function storeTokenInLocalStorage(token) {
   localStorage.setItem('token', token);
@@ -46,4 +47,11 @@ export const processDateString = (dateStr, yearOnly = false) => {
   }
 
   return retDate;
+}
+
+export const useDocumentTitle = (title) => {
+    useEffect(() => {
+      let newTitle = title !== '' ? title + " - The Zalewski Project" : "The Zalewski Project"
+      document.title = newTitle
+    }, [title])
 }

@@ -28,7 +28,6 @@ import ScrollToTop from "./lib/ScrollToTop";
 const StyledContainer = styled.div`
 `;
 
-const siteTitle = "The Zalewski Project - "
 const AppLayout = () => (
     <>
     <ScrollRestoration />
@@ -54,11 +53,11 @@ const router = createBrowserRouter(
         <Route path="/deaths/search/:term" element={<DeathIndex />} />
         <Route path="/deaths/:year" element={<DeathIndex />} />
         <Route path="/deaths" element={<DeathIndex />} />
-        <Route path="/census" element={<CensusListPage title={`${siteTitle}Census Records`} />} />
-        <Route path="/census/:year" element={<CensusListPage title={`${siteTitle}Census Records`}/>} />
-        <Route path="/census/:year/:state" element={<CensusListPage title={`${siteTitle}Census`} />} />
-        <Route path="/census/:year/:state/:city" element={<CensusItems title={`${siteTitle}Census`} />} />
-        <Route path="/census/person/:personId" element={<Person title={siteTitle} />} />
+        <Route path="/census" element={<CensusListPage />} />
+        <Route path="/census/:year" element={<CensusListPage />} />
+        <Route path="/census/:year/:state" element={<CensusListPage />} />
+        <Route path="/census/:year/:state/:city" element={<CensusItems />} />
+        <Route path="/census/person/:personId" element={<Person />} />
         <Route path="/connections/:personId" element={<Connection />} />
         <Route path="/wikitree/:page?" element={<WikiTree />} />
         <Route path="/cemetery" element={<CemeteryPage />} />

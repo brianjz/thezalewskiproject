@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
+import { useDocumentTitle } from '../lib/common';
 
 const StyledButtons = styled.div`
     ${({ theme }) => theme.mixins.mainButtons};
+    @media (max-width:1080px) {
+        gap: 10px;
+    }
 
     svg {
         color: white;
@@ -24,6 +28,7 @@ const StyledAnnoucement = styled.p`
 `;
 
 const HomePage = () => {
+    useDocumentTitle('')
     return (
         <>
         <h4>Welcome to the beginnings of The Zalewski Project.</h4>
