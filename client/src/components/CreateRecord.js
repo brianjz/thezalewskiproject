@@ -95,7 +95,6 @@ class CreateRecord extends Component {
             this.setState({isEdit: true});
           });      
         }
-        console.log(this.state)
     }
 
     onChangeDate(e) {
@@ -187,7 +186,6 @@ class CreateRecord extends Component {
         } else {
           axios.post(`${API_ENDPOINT}/api/record/add`, recordObject, authConfig)
               .then(res => {
-                  console.log(res.data);
                   if(res.data.ackowledged) {
                       console.log(`Added - ${res.data.insertedId}`);
                   } else {

@@ -95,7 +95,6 @@ const Pager = props => {
   } = props;
 
   const newSiblingCount = isMobile ? 0 : siblingCount
-  console.log(isMobile, siblingCount, newSiblingCount)
 
   const paginationRange = usePagination({
     currentPage,
